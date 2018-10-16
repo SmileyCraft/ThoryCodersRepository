@@ -10,12 +10,10 @@ bool comp(dijkstraNode a, dijkstraNode b){
 
 vector<pair<int, double>> dijkstra(vector<unordered_map<int, double>> graph, int source){
     vector<bool> visited(graph.size(), false);
-    pair<int, double> unreachable(-1, 0);
-    vector<pair<int, double>> result(graph.size(), unreachable);
+    vector<pair<int, double>> result(graph.size(), {-1, -1});
     priority_queue<dijkstraNode, vector<dijkstraNode>, function<bool(dijkstraNode, dijkstraNode)>> heap(comp);
 
-    dijkstraNode initial = {source, source, 0};
-    heap.push(initial);
+    heap.push({source, source, 0});
 
     while (!heap.empty()){
         dijkstraNode node = heap.top();
@@ -24,12 +22,11 @@ vector<pair<int, double>> dijkstra(vector<unordered_map<int, double>> graph, int
         if (visited[node.id])
             continue;
         visited[node.id] = true;
-        pair<int, double> resultPair(node.fromID, node.distance);
-        result[node.id] = resultPair;
+        result[node.id] = {node.fromID, node.distance};
 
         for(auto i : graph[node.id]){
-            dijkstraNode nextNode = {i.first, node.id, node.distance + i.second};
-            heap.push(nextNode);
+            if (!visited[i.first])
+                heap.push({i.first, node.id, node.distance + i.second});
         }
     }
 
@@ -37,7 +34,7 @@ vector<pair<int, double>> dijkstra(vector<unordered_map<int, double>> graph, int
 }
 
 void testDijkstra(){
-    vector<unordered_map<int, double>> graph(4);
+    vector<unordered_map<int, double>> graph(5);
     unordered_map<int, double> m0;
     m0.insert({1, 3});
     m0.insert({2, 5});
@@ -50,11 +47,14 @@ void testDijkstra(){
     m2.insert({3, 5});
     unordered_map<int, double> m3;
     m3.insert({0, 8});
+    unordered_map<int, double> m4;
+    m3.insert({1, 1});
 
     graph[0] = m0;
     graph[1] = m1;
     graph[2] = m2;
     graph[3] = m3;
+    graph[4] = m4;
 
     printEval(dijkstra(graph, 0), [](pair<int, double> x){return "(" + tostring(x.first) + " " + tostring(x.second) + ")"; });
 }
