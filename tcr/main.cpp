@@ -16,6 +16,7 @@ testsessie todo list
 #include "segmenttree.cpp"
 #include "shoelace.cpp"
 #include "intersections.cpp"
+#include "dijkstra.cpp"
 
 int main(){
     testUnionFind();
@@ -29,5 +30,7 @@ int main(){
     testShoelace();
     cout << endl;
     testIntersections();
+    cout << endl;
+    testDijkstra();
     return 0;
 }
