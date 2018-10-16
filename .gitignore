@@ -1,4 +1,4 @@
 
 *.cbp
-*/bin
-*/obj
+tcr/bin/
+tcr/obj/
