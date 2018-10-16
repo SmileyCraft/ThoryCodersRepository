@@ -8,11 +8,12 @@ testsessie todo list
 
 #define LOG
 
-#include "Template.cpp"
+#include "template.cpp"
 
-#include "UnionFind.cpp"
-#include "LinkedList.cpp"
-#include "Trie.cpp"
+#include "unionfind.cpp"
+#include "linkedlist.cpp"
+#include "trie.cpp"
+#include "shoelace.cpp"
 
 int main(){
     testUnionFind();
@@ -20,5 +21,7 @@ int main(){
     testLinkedList();
     cout << endl;
     testTrie();
+    cout << endl;
+    testShoelace();
     return 0;
 }
