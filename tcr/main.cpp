@@ -14,6 +14,7 @@ testsessie todo list
 #include "linkedlist.cpp"
 #include "trie.cpp"
 #include "shoelace.cpp"
+#include "intersections.cpp"
 
 int main(){
     testUnionFind();
@@ -23,5 +24,7 @@ int main(){
     testTrie();
     cout << endl;
     testShoelace();
+    cout << endl;
+    testIntersections();
     return 0;
 }
