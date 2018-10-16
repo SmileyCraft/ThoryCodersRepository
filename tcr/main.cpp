@@ -15,6 +15,7 @@ testsessie todo list
 #include "trie.cpp"
 #include "segmenttree.cpp"
 #include "shoelace.cpp"
+#include "intersections.cpp"
 
 int main(){
     testUnionFind();
@@ -26,5 +27,7 @@ int main(){
     testSegmentTree();
     cout << endl;
     testShoelace();
+    cout << endl;
+    testIntersections();
     return 0;
 }
