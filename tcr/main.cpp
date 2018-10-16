@@ -13,7 +13,10 @@ testsessie todo list
 #include "unionfind.cpp"
 #include "linkedlist.cpp"
 #include "trie.cpp"
+#include "segmenttree.cpp"
 #include "shoelace.cpp"
+#include "intersections.cpp"
+#include "dijkstra.cpp"
 
 int main(){
     testUnionFind();
@@ -22,6 +25,12 @@ int main(){
     cout << endl;
     testTrie();
     cout << endl;
+    testSegmentTree();
+    cout << endl;
     testShoelace();
+    cout << endl;
+    testIntersections();
+    cout << endl;
+    testDijkstra();
     return 0;
 }
