@@ -13,6 +13,7 @@ testsessie todo list
 #include "unionfind.cpp"
 #include "linkedlist.cpp"
 #include "trie.cpp"
+#include "segmenttree.cpp"
 #include "shoelace.cpp"
 
 int main(){
@@ -21,6 +22,8 @@ int main(){
     testLinkedList();
     cout << endl;
     testTrie();
+    cout << endl;
+    testSegmentTree();
     cout << endl;
     testShoelace();
     return 0;
