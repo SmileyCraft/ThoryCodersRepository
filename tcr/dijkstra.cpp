@@ -48,7 +48,7 @@ void testDijkstra(){
     unordered_map<int, double> m3;
     m3.insert({0, 8});
     unordered_map<int, double> m4;
-    m3.insert({1, 1});
+    m4.insert({1, 1});
 
     graph[0] = m0;
     graph[1] = m1;
