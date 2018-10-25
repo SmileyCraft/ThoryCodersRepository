@@ -1,4 +1,32 @@
 
+/*
+TODO:
+
+Simple:
+Distances / Closest point (point line segment, line segment line segment, maybe something with circles)
+Longest common subsequence
+Euler phi / totent
+Extended Euclid
+Split string
+Johnson / Floyd-Warschall (All pairs shortest paths)
+Hopcroft Karp
+
+Complicated:
+Dinic (max flow, maybe a separate min cut method)
+Order Statistics Tree (Balanced Binary Search Tree)
+3D geometry intersections / distances / cross product / etc
+
+Unfamiliar:
+Suffix Tree (longest common substring)
+(2D) Fenwick Tree
+Linear system of equation solver (Matrix inverse)
+Heavy Light Decomposition (Maximum Edge on Path query)
+Least Common Ancester in a Tree
+Hierholzer
+Bron-Kerbosch
+Min cost max flow
+*/
+
 #define LOG
 
 #include "template/template.cpp"
