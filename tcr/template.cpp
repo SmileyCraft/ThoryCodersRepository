@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+using NUMBER = long double;
+
 template <class T>
 void Log(T t){
     #ifdef LOG
@@ -21,31 +23,12 @@ void LogLn(T t, S... s){
 }
 
 vector<int> fromTo(int from, int to){
-    vector<int> v;
-    for (int i = from; i < to; i++) v.push_back(i);
+    vector<int> v(to - from);
+    for (int i = 0; i + from < to; i++) v[i] = i + from;
     return v;
 }
 
-#define identity [](auto x){return x;}
-#define tostring [](auto x){return to_string(x);}
-template <class InputIt, class F>
-string evalString(InputIt first, InputIt last, F f){
-    string s = "{";
-    string* p = &s;
-    if (first != last) s += f(*first++);
-    for_each(first, last, [f, p](auto &x)mutable{*p += " "; *p += f(x);});
-    s += "}";
-    return s;
-}
-template <class T, class F>
-string evalString(T t, F f){
-    return evalString(begin(t), end(t), f);
-}
-template<class InputIt, class F>
-void printEval(InputIt first, InputIt last, F f){
-    cout << evalString(first, last, f) << endl;
-}
-template<class T, class F>
-void printEval(T t, F f){
-    cout << evalString(t, f) << endl;
-}
+/*int main(){
+    cout << "Hello, World!" << endl;
+    return 0;
+}*/

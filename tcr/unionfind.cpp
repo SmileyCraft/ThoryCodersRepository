@@ -1,39 +1,41 @@
+
 struct UnionFind{
-    vector<int> ps, rs;
+    vector<int> parents, ranks, sizes;
 
-    UnionFind(int n) : ps(n), rs(n) {
-        for (int i = 0; i < n; i++) ps[i] = i;
-    }
+    UnionFind(int n = 0) : parents(fromTo(0, n)), ranks(n, 0), sizes(n, 1) {} // O(n)
 
-    UnionFind() : UnionFind(0) {}
+    int groupId(int i) {return parents[i] == i ? i : (parents[i] = groupId(parents[i]));} // O(a(n))
+    int groupSize(int i) {return sizes[groupId(i)];} // O(a(n))
 
-    int find(int x){
-        return ps[x] == x ? x : (ps[x] = find(ps[x]));
-    }
-
-    void merge(int x, int y){
-        if ((x = find(x)) == (y = find(y))) return;
-        if (rs[x] < rs[y]) swap(x, y);
-        ps[y] = x;
-        if (rs[x] == rs[y]) rs[x]++;
+    void combine(int i, int j){ // O(a(n))
+        if ((i = groupId(i)) == (j = groupId(j))) return;
+        if (ranks[i] < ranks[j]) swap(i, j);
+        parents[j] = i;
+        sizes[i] += sizes[j];
+        if (ranks[i] == ranks[j]) ranks[i]++;
     }
 };
 
-void printUF(UnionFind uf){
-    printEval(fromTo(0, uf.ps.size()), [uf](int i)mutable{return to_string(uf.find(i));});
+// TESTING
+
+void printUnionFind(UnionFind uf){
+    printEval(fromTo(0, uf.parents.size()), [uf](int i)mutable{cout << uf.groupId(i);}) << endl;
 }
 
 void testUnionFind(){
+    cout << "UNION FIND" << endl;
     UnionFind uf(6);
-    uf.merge(0, 1);
-    uf.merge(2, 3);
-    printUF(uf); //0 0 2 2 4 5
+    uf.combine(0, 1);
+    uf.combine(2, 3);
+    printUnionFind(uf); // {0 0 2 2 4 5}
     UnionFind uf2 = uf;
-    uf2.merge(0, 3);
-    printUF(uf2); //0 0 0 0 4 5
-    uf.merge(3, 0);
-    printUF(uf); //2 2 2 2 4 5
-    uf.merge(1, 4);
-    uf.merge(5, 3);
-    printUF(uf); //2 2 2 2 2 2
+    uf2.combine(0, 3);
+    printUnionFind(uf2); // {0 0 0 0 4 5}
+    uf.combine(3, 0);
+    printUnionFind(uf); // {2 2 2 2 4 5}
+    cout << uf.groupSize(0) << endl; // 4
+    uf.combine(1, 4);
+    uf.combine(5, 3);
+    printUnionFind(uf); // {2 2 2 2 2 2}
+    cout << endl;
 }
