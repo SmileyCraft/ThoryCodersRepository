@@ -5,3 +5,11 @@
 *.depend
 *.layout
 *.save-failed
+*.eps
+*.aux
+*.log
+*.out
+*.gz
+*.toc
+
+tcr.pdf
