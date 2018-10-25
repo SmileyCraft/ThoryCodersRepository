@@ -39,7 +39,7 @@ pair<point, point> lineCircle(line l, circle c){ // O(1)
 
 pair<point, point> circleCircle(circle c1, circle c2){ // O(1)
     point d = c2.m - c1.m;
-    point n = point(d.y, -d.x);
+    point n = {d.y, -d.x};
 
     // Circles must not have the same center
     // Circles intersect iff disc >= 0

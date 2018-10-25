@@ -15,8 +15,10 @@
 #include "convexhull.cpp"
 
 #include "dijkstra.cpp"
+#include "bellmanford.cpp"
 #include "topologicalsort.cpp"
 #include "stronglyconnectedcomponents.cpp"
+#include "prim.cpp"
 
 #include "stringmatching.cpp"
 #include "longestincreasingsubsequence.cpp"
@@ -36,8 +38,10 @@ int main(){
     testConvexHull();
     cout << "-----o-----o----- GRAPH ALGORITHMS -----o-----o-----" << endl << endl;
     testDijkstra();
+    testBellmanFord();
     testTopologicalSort();
     testStronglyConnectedComponents();
+    testPrim();
     cout << "-----o-----o----- STRING AND LIST ALGORITHMS -----o-----o-----" << endl << endl;
     testStringMatching();
     testLongestIncreasingSubsequence();
