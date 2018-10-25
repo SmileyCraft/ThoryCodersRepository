@@ -22,19 +22,3 @@ vector<pair<int, NUMBER>> bellmanFord(vector<unordered_map<int, NUMBER>>& graph,
     if (b) return {};
     else return retval;
 }
-
-// TESTING
-
-void testBellmanFord(){
-    cout << "BELLMAN FORD" << endl;
-    vector<unordered_map<int, NUMBER>> graph = {{{0,2},{1,3},{2,5}},{{2,1},{3,2}},{{1,1},{3,5}},{{0,8},{1,1}},{}};
-    cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 3} {1 4} {1 5} {-1 -1}}
-    graph[0][1] = 6;
-    graph[1][2] = -2;
-    cout << bellmanFord(graph, 0) << endl; // {}
-    graph[2][1] = 2;
-    cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 6} {1 4} {1 8} {-1 -1}}
-    graph[0][4] = -10;
-    cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 6} {1 4} {1 8} {0 -10}}
-    cout << endl;
-}

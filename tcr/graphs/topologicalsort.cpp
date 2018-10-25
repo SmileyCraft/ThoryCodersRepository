@@ -16,12 +16,3 @@ vector<int> topologicalSort(vector<vector<int>>& graph){
     }
     return sorted;
 }
-
-// TESTING
-
-void testTopologicalSort(){
-    cout << "TOPOLOGICAL SORT" << endl;
-    vector<vector<int>> graph = {{3},{0,4},{5,6},{},{0,8},{0,6},{0,3},{1,5},{}};
-    cout << topologicalSort(graph) << endl; // {2 7 1 5 4 6 8 0 3}
-    cout << endl;
-}

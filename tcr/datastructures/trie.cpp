@@ -24,19 +24,3 @@ struct TrieNode{
         return next[v]->getAmount(s, i + 1);
     }
 };
-
-// TESTING
-
-void testTrie(){
-    cout << "TRIE" << endl;
-    TrieNode trie;
-    string s1 = "hello";
-    string s2 = "hell";
-    trie.add(s1, 0);
-    trie.add(s1, 0);
-    trie.add(s1, 0);
-    trie.add(s1, 0);
-    cout << trie.getAmount(s1, 0) << endl; // 4
-    cout << trie.getAmount(s2, 0) << endl; // 0
-    cout << endl;
-}

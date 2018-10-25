@@ -40,22 +40,3 @@ vector<point> convexhull(vector<point> points){ // O(n log n)
     hull.pop_back();
     return hull;
 }
-
-// TESTING
-
-void testConvexHull(){
-    cout << "CONVEX HULL" << endl;
-    vector<point> points;
-    for (int x = 0; x < 5; x++) for (int y = 0; y < 5; y++) points.push_back({x, y});
-    cout << convexhull(points) << endl; // {(0 4) (0 0) (4 0) (4 4)}
-    points.clear();
-    for (int x = 0; x < 5; x++) for (int y = 4 - x; y < 5; y++) points.push_back({x, y});
-    cout << convexhull(points) << endl; // {(0 4) (4 0) (4 4)}
-    points.clear();
-    for (int x = 0; x < 5; x++) for (int y = 0; y <= x; y++) points.push_back({x, y});
-    cout << convexhull(points) << endl; // {(0 0) (4 0) (4 4)}
-    points.clear();
-    for (int x = 0; x < 5; x++) for (int y = vector<int>({1,2,2,1,0})[x]; y <= vector<int>({2,4,3,3,1})[x]; y++) points.push_back({x, y});
-    cout << convexhull(points) << endl; // {(0 2) (0 1) (4 0) (4 1) (3 3) (1 4)}
-    cout << endl;
-}

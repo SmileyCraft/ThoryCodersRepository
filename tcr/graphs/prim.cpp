@@ -23,26 +23,3 @@ vector<pair<int, int>> prim(vector<unordered_map<int, NUMBER>> graph, int root =
 
     return retval;
 }
-
-// TESTING
-
-void addUndirectedEdge(vector<unordered_map<int, NUMBER>>& graph, int a, int b, NUMBER length){
-    graph[a][b] = length;
-    graph[b][a] = length;
-}
-
-void testPrim(){
-    cout << "PRIM" << endl;
-    vector<unordered_map<int, NUMBER>> graph(6);
-    addUndirectedEdge(graph, 0, 1, 1);
-    addUndirectedEdge(graph, 0, 3, 4);
-    addUndirectedEdge(graph, 0, 4, 3);
-    addUndirectedEdge(graph, 1, 3, 4);
-    addUndirectedEdge(graph, 1, 4, 2);
-    addUndirectedEdge(graph, 2, 4, 4);
-    addUndirectedEdge(graph, 2, 5, 5);
-    addUndirectedEdge(graph, 3, 4, 4);
-    addUndirectedEdge(graph, 4, 5, 7);
-    cout << prim(graph) << endl;
-    cout << endl;
-}

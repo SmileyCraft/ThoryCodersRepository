@@ -25,12 +25,3 @@ vector<pair<int, NUMBER>> dijkstra(vector<unordered_map<int, NUMBER>>& graph, in
 
     return retval;
 }
-
-// TESTING
-
-void testDijkstra(){
-    cout << "DIJKSTRA" << endl;
-    vector<unordered_map<int, NUMBER>> graph = {{{0,2},{1,3},{2,5}},{{2,1},{3,2}},{{1,1},{3,5}},{{0,8},{1,1}},{}};
-    cout << dijkstra(graph, 0) << endl; // {{0 0} {0 3} {1 4} {1 5} {-1 -1}}
-    cout << endl;
-}

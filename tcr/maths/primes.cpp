@@ -59,15 +59,3 @@ vector<unordered_map<int, int>> factorSieve(int n){
     }
     return factorizations;
 }
-
-// TESTING
-
-void testPrimes(){
-    cout << "PRIMES" << endl;
-    printEval(fromTo(0, 30), [](int i){cout << (prime(i) ? "p" : "c");}) << endl; // {c c p p c p c p c c c p c p c c c p c p c c c p c c c c c p}
-    auto primes = sieve(30);
-    printEval(primes, [](bool b){cout << (b ? "p" : "c");}) << endl; // {c c p p c p c p c c c p c p c c c p c p c c c p c c c c c p}
-    cout << factorize(120) << endl; // {{5 1} {3 1} {2 3}}
-    cout << factorSieve(10) << endl; // {{} {} {{2 1}} {{3 1}} {{2 2}} {{5 1}} {{3 1} {2 1}} {{7 1}} {{2 3}} {{3 2}}}
-    cout << endl;
-}

@@ -53,15 +53,3 @@ vector<vector<int>> stronglyConnectedComponents(vector<vector<int>>& graph){
     }
     return sccs;
 }
-
-// TESTING
-
-void testStronglyConnectedComponents(){
-    cout << "STRONGLY CONNECTED COMPONENTS" << endl;
-    vector<vector<int>> graph = {{1,4},{2,4},{3},{2,7},{5},{1,6},{2},{6}};
-    cout << stronglyConnectedComponents(graph) << endl; // {{0} {1 5 4} {2 3 6 7}}
-    graph = {{3,5,6},{2},{1,3},{0,2,4},{3},{0,8},{7},{8},{6,10},{8},{9},{4,14,15},{4,11,13},{14},
-            {12,13,17},{17},{8,15},{19},{10,16},{18},{13,22},{20},{13,20,21}};
-    cout << stronglyConnectedComponents(graph) << endl; // {{20 21 22} {11 12 14 13} {17 15 16 18 19} {0 3 5 2 4 1} {8 7 9 6 10}}
-    cout << endl;
-}

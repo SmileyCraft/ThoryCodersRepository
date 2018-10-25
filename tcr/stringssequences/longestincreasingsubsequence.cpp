@@ -21,14 +21,3 @@ vector<int> longestIncreasingSubsequence(vector<T> sequence, F f){
     }
     return lis;
 }
-
-// TESTING
-
-void testLongestIncreasingSubsequence(){
-    cout << "LONGEST INCREASING SUBSEQUENCE" << endl;
-    auto compare = [](int a, int b){return a < b;};
-    cout << longestIncreasingSubsequence(vector<int>{7, 8, 9, 4, 5, 6, 1, 2, 3}, compare) << endl; // {6 7 8}
-    cout << longestIncreasingSubsequence(vector<int>{3, 2, 1, 6, 5, 4, 9, 8, 7}, compare) << endl; // {2 5 8}
-    cout << longestIncreasingSubsequence(vector<int>{7, 2, 4, 9, 1, 6, 8, 3, 5}, compare) << endl; // {1 2 5 6}
-    cout << endl;
-}

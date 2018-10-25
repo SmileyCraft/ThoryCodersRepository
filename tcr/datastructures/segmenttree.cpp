@@ -25,25 +25,3 @@ struct SegmentTree{
         return combine(from == to ? combine(left, combs[from]) : left, right);
     }
 };
-
-// TESTING
-
-void testSegmentTree(){
-    cout << "SEGMENT TREE" << endl;
-    vector<int> vec = {1,2,4,0,5};
-    auto sum = [](int x, int y){return x + y;};
-    SegmentTree<int, decltype(sum)> st(vec, 0, sum);
-    cout << st.combs << endl; // {0 12 6 6 5 1 2 4 0 5}
-    cout << st.query(0, 3) << endl; // 7
-    cout << st.query(1, 2) << endl; // 6
-    cout << st.query(0, 4) << endl; // 12
-    cout << st.query(3, 3) << endl; // 0
-    st.update(3, 3);
-    cout << st.query(0, 3) << endl; // 10
-    auto maxi = [](int x, int y){return max(x, y);};
-    SegmentTree<int, decltype(maxi)> st2(vec, 0, maxi);
-    cout << st2.combs << endl; // {0 5 5 4 5 1 2 4 0 5}
-    st2.update(4, 3);
-    cout << st2.combs << endl; // {0 4 3 4 3 1 2 4 0 3}
-    cout << endl;
-}

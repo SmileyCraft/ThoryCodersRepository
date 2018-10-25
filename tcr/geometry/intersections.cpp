@@ -51,13 +51,3 @@ pair<point, point> circleCircle(circle c1, circle c2){ // O(1)
 
     return pair<point, point>(c1.m + f * d + s * n, c1.m + f * d - s * n);
 }
-
-// TESTING
-
-void testIntersections(){
-    cout << "INTERSECTIONS" << endl;
-    cout << lineLine({{0,0},{2,1}},{{2.0},{1,2}}) << endl; // (1.6 0.8)
-    cout << lineCircle({{0,0},{2,1}},{{0,2},4}) << endl; // (1.6 0.8) (0 0)
-    cout << circleCircle({{0,2},4},{{0,0},4}) << endl; // (-1.732 1) (1.732 1)
-    cout << endl;
-}
