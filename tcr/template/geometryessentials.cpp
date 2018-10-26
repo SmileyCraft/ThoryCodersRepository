@@ -1,4 +1,6 @@
 
+using NUMBER = long double;
+
 struct point {
     NUMBER x, y;
 
@@ -20,6 +22,9 @@ point operator* (NUMBER d, point p) {return {d * p.x, d * p.y};}
 
 point complexConjugate(point p) {return {p.x, -p.y};}
 point complexMultiply(point p, point q) {return {p.x * q.x - p.y * q.y, p.x * q.y + p.y * q.x};}
+
+template <class T>
+basic_ostream<T>& operator<< (basic_ostream<T>& str, point p) {return str << "(" << p.x << " " << p.y << ")";}
 
 struct line{
     point p, q;

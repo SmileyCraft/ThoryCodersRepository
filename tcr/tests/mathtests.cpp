@@ -19,7 +19,7 @@ void testPrimes(){
 void testExtended(int a, int b){
     EuclidType et = extendedEuclid(a, b);
     bool valid = et.ca * a + et.cb * b == et.x && b % et.x == 0 && a % et.x == 0;
-    cout << et.ca << " " << et.cb << " " << et.x << " " << (valid ? "" : "YOU ARE A FAILURE") << endl;
+    cout << et.ca << " " << et.cb << " " << et.x << " " << (valid ? "SUCCESS" : "FAILURE") << endl;
 }
 
 void testEuclid(){
@@ -28,19 +28,19 @@ void testEuclid(){
     cout << endl;
 
     cout << "EXTENDED EUCLID" << endl;
-    testExtended(2 * 3 * 5 * 11 * 13 * 19, 3 * 5 * 7 * 13 * 17);
-    testExtended(123456789, 987654321);
-    testExtended(1, 1);
-    testExtended(3, 0);
-    testExtended(0, 3);
-    testExtended(15, 21);
-    testExtended(15, -21);
-    testExtended(-15, 21);
-    testExtended(-15, -21);
-    testExtended(21, 15);
-    testExtended(21, -15);
-    testExtended(-21, 15);
-    testExtended(-21, -15);
+    testExtended(2 * 3 * 5 * 11 * 13 * 19, 3 * 5 * 7 * 13 * 17); // -39 137 195 SUCCESS
+    testExtended(123456789, 987654321); // -8 1 9 SUCCESS
+    testExtended(1, 1); // 0 1 1 SUCCESS
+    testExtended(3, 0); // 1 0 3 SUCCESS
+    testExtended(0, 3); // 0 1 3 SUCCESS
+    testExtended(15, 21); // 3 -2 3 SUCCESS
+    testExtended(15, -21); // 3 2 3 SUCCESS
+    testExtended(-15, 21); // -3 -2 3 SUCCESS
+    testExtended(-15, -21); // -3 2 3 SUCCESS
+    testExtended(21, 15); // -2 3 3 SUCCESS
+    testExtended(21, -15); // -2 -3 3 SUCCESS
+    testExtended(-21, 15); // 2 3 3 SUCCESS
+    testExtended(-21, -15); // 2 -3 3 SUCCESS
 }
 
 // COMBINED TEST

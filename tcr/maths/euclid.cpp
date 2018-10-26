@@ -6,17 +6,9 @@ int gcd(int a, int b){
 }
 
 struct EuclidType{
-    int ca;
-    int cb;
-    int x;
-
-    EuclidType operator + (EuclidType param){
-        return {ca + param.ca, cb + param.cb, x + param.x};
-    }
-
-    EuclidType operator * (int param){
-        return {param * ca, param * cb, param * x};
-    }
+    int ca, cb, x;
+    EuclidType operator+ (EuclidType other) {return {ca + other.ca, cb + other.cb, x + other.x};}
+    EuclidType operator* (int scalar) {return {scalar * ca, scalar * cb, scalar * x};}
 };
 
 EuclidType extendedEuclid(int a, int b){

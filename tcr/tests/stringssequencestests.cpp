@@ -1,11 +1,8 @@
 
 #include "../stringssequences/stringmatching.cpp"
 #include "../stringssequences/longestincreasingsubsequence.cpp"
-<<<<<<< HEAD
 #include "../stringssequences/longestcommonsubsequence.cpp"
-=======
 #include "../stringssequences/split.cpp"
->>>>>>> d4b05380008454222fa3d3576b08268e8a5b8df8
 
 // STRING MATCHING
 
@@ -50,7 +47,8 @@ void testLongestCommonSubsequence(){
 
 void testSplit(){
     cout << "SPLIT" << endl;
-    cout << split("XDwowXDniceXDlolololXDyoloXDswagXD", "XD") << endl;
+    cout << split("XDwowXDniceXDXx_420Blazit_xXXDDXXDyoloXDswagXD", "XD") << endl; // { wow nice Xx_420Blazit_xX DX yolo swag }
+    cout << split("ababbabaaabababbbababbaaba", "bab") << endl; // {a  aaa abb abbaaba}
     cout << endl;
 }
 

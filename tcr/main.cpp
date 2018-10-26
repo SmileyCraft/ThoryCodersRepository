@@ -3,7 +3,7 @@
 TODO:
 
 Simple:
-Distances / Closest point (point line segment, line segment line segment, maybe something with circles)
+Distances / Closest point (point line segment DONE, line segment line segment, maybe something with circles)
 Euler phi / totent
 Johnson / Floyd-Warschall (All pairs shortest paths)
 

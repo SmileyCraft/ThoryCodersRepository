@@ -2,6 +2,7 @@
 #include "../geometry/shoelace.cpp"
 #include "../geometry/intersections.cpp"
 #include "../geometry/convexhull.cpp"
+#include "../geometry/distances.cpp"
 
 // SHOELACE
 
@@ -47,7 +48,9 @@ void testConvexHull(){
 
 void testDistances(){
     cout << "DISTANCES" << endl;
-    cout << "TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << pointLineSegment({0,0},{{1,1},{2,3}}) << endl; // 1.414
+    cout << pointLineSegment({0,0},{{1,0},{0,-1}}) << endl; // 0.707
+    cout << pointLineSegment({0,0},{{1,1},{0,1}}) << endl; // 1
     cout << endl;
 }
 

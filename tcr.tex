@@ -204,6 +204,14 @@ The Thorycoders}
 {./tcr/graphs/hopcroftkarp.cpp}
 {$\mathcal{O}(E\sqrt V)$}{}
 
+\entry{Flow Graph}{}
+{./flowgraph.cpp}{}{}
+
+\entry{Dinic}{}
+{./dinic.cpp}
+{$\mathcal{O}(V^2E)$}
+{Flow Graph}
+
 \subsection{Johnson's reweighting}
 Apply Bellman-Ford to the graph with \texttt{d[$\omega$] = 0} (as if an extra vertex with zero weight edges were added), then reweight edges to $w_{uv}+h_u-h_v$, then use Dijkstra.
 \noindent\textbf{Complexity:} $\mathcal{O}(VE\log V)$
@@ -246,7 +254,7 @@ Apply Bellman-Ford to the graph with \texttt{d[$\omega$] = 0} (as if an extra ve
 {$\mathcal{O}(n\log n)$}
 {Geometry Essentials}
 
-\entry{Distances TODO}{}
+\entry{Distances}{}
 {./tcr/geometry/distances.cpp}{}
 {Geometry Essentials}
 
@@ -327,7 +335,15 @@ A useful identity: $\bigoplus_{x=0}^{a - 1} x = \{0, a - 1, 1, a\}[a \% 4]$.
 
 \entry{Longest Increasing Subsequence}{}
 {./tcr/stringssequences/longestincreasingsubsequence.cpp}
-{$O(n \log n)$}{}
+{$\mathcal{O}(n \log n)$}{}
+
+\entry{Longest Common Subsequence}{Use Longest Increasing Subsequence if either sequence has distinct elements.}
+{./tcr/stringssequences/longestcommonsubsequence.cpp}
+{$\mathcal{O}(n^2)$}{}
+
+\entry{Split}{}
+{./tcr/stringssequences/split.cpp}
+{$\mathcal{O}(n)$}{}
 
 \section{Strategies}
 Take a break after 2 hours.

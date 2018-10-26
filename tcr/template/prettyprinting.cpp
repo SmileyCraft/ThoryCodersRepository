@@ -12,8 +12,6 @@ ostream& printEval(C c, F f){
     return printEval(begin(c), end(c), f);
 }
 
-template <class T>
-basic_ostream<T>& operator<< (basic_ostream<T>& str, point p) {return str << "(" << p.x << " " << p.y << ")";}
 template <class T, class P1, class P2>
 basic_ostream<T>& operator<< (basic_ostream<T>& str, pair<P1, P2> p) {return str << "{" << p.first << " " << p.second << "}";}
 template <class T, class V>
