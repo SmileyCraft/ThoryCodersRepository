@@ -1,6 +1,7 @@
 
 #include "../stringssequences/stringmatching.cpp"
 #include "../stringssequences/longestincreasingsubsequence.cpp"
+#include "../stringssequences/split.cpp"
 
 // STRING MATCHING
 
@@ -28,10 +29,19 @@ void testLongestIncreasingSubsequence(){
     cout << endl;
 }
 
+// SPLIT
+
+void testSplit(){
+    cout << "SPLIT" << endl;
+    cout << split("XDwowXDniceXDlolololXDyoloXDswagXD", "XD") << endl;
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testStringsSequences(){
     cout << "-----o-----o----- STRING AND SEQUENCE ALGORITHMS -----o-----o-----" << endl << endl;
     testStringMatching();
     testLongestIncreasingSubsequence();
+    testSplit();
 }
