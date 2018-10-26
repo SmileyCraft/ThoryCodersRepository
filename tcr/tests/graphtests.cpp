@@ -4,6 +4,7 @@
 #include "../graphs/topologicalsort.cpp"
 #include "../graphs/stronglyconnectedcomponents.cpp"
 #include "../graphs/prim.cpp"
+#include "../graphs/hopcroftkarp.cpp"
 
 // SHORTEST PATHS
 
@@ -66,6 +67,15 @@ void testPrim(){
     cout << endl;
 }
 
+// HOPCROFT KARP
+
+void testHopcroftKarp(){
+    cout << "HOPCROFT KARP" << endl;
+    vector<vector<int>> graph = {{0,1},{0,4},{2,3},{0,4},{1,3}};
+    cout << hopcroftKarp(graph) << endl; // {1 4 2 0 3}
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testGraphs(){
@@ -74,4 +84,5 @@ void testGraphs(){
     testTopologicalSort();
     testStronglyConnectedComponents();
     testPrim();
+    testHopcroftKarp();
 }

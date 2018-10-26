@@ -200,6 +200,10 @@ The Thorycoders}
 {./tcr/graphs/prim.cpp}
 {$\mathcal{O}(E\log V)$}{}
 
+\entry{Hopcroft Karp}{}
+{./tcr/graphs/hopcroftkarp.cpp}
+{$\mathcal{O}(E\sqrt V)$}{}
+
 \subsection{Johnson's reweighting}
 Apply Bellman-Ford to the graph with \texttt{d[$\omega$] = 0} (as if an extra vertex with zero weight edges were added), then reweight edges to $w_{uv}+h_u-h_v$, then use Dijkstra.
 \noindent\textbf{Complexity:} $\mathcal{O}(VE\log V)$

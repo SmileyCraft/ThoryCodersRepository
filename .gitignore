@@ -5,7 +5,6 @@
 *.depend
 *.layout
 *.save-failed
-*.eps
 *.aux
 *.log
 *.out

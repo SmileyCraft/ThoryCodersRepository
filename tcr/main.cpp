@@ -9,7 +9,6 @@ Euler phi / totent
 Extended Euclid
 Split string
 Johnson / Floyd-Warschall (All pairs shortest paths)
-Hopcroft Karp
 
 Complicated:
 Dinic (max flow, maybe a separate min cut method)
