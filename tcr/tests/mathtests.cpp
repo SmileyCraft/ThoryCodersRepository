@@ -16,10 +16,31 @@ void testPrimes(){
 
 // EUCLID
 
+void testExtended(int a, int b){
+    EuclidType et = extendedEuclid(a, b);
+    bool valid = et.ca * a + et.cb * b == et.x && b % et.x == 0 && a % et.x == 0;
+    cout << et.ca << " " << et.cb << " " << et.x << " " << (valid ? "" : "YOU ARE A FAILURE") << endl;
+}
+
 void testEuclid(){
     cout << "EUCLID" << endl;
     cout << gcd(2 * 3 * 5 * 11 * 13 * 19, 3 * 5 * 7 * 13 * 17) << endl; // 195
     cout << endl;
+
+    cout << "EXTENDED EUCLID" << endl;
+    testExtended(2 * 3 * 5 * 11 * 13 * 19, 3 * 5 * 7 * 13 * 17);
+    testExtended(123456789, 987654321);
+    testExtended(1, 1);
+    testExtended(3, 0);
+    testExtended(0, 3);
+    testExtended(15, 21);
+    testExtended(15, -21);
+    testExtended(-15, 21);
+    testExtended(-15, -21);
+    testExtended(21, 15);
+    testExtended(21, -15);
+    testExtended(-21, 15);
+    testExtended(-21, -15);
 }
 
 // COMBINED TEST
