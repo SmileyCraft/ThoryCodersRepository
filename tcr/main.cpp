@@ -4,10 +4,7 @@ TODO:
 
 Simple:
 Distances / Closest point (point line segment, line segment line segment, maybe something with circles)
-Longest common subsequence
 Euler phi / totent
-Extended Euclid
-Split string
 Johnson / Floyd-Warschall (All pairs shortest paths)
 
 Complicated:
@@ -24,6 +21,8 @@ Least Common Ancester in a Tree
 Hierholzer
 Bron-Kerbosch
 Min cost max flow
+KD tree
+Voranoid diagram
 */
 
 #define LOG

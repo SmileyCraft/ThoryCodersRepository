@@ -1,6 +1,7 @@
 
 #include "../stringssequences/stringmatching.cpp"
 #include "../stringssequences/longestincreasingsubsequence.cpp"
+#include "../stringssequences/longestcommonsubsequence.cpp"
 
 // STRING MATCHING
 
@@ -28,10 +29,24 @@ void testLongestIncreasingSubsequence(){
     cout << endl;
 }
 
+// LONGEST COMMON SUBSEQUENCE
+
+void testLongestCommonSubsequence(){
+    cout << "LONGEST COMMON SUBSEQUENCE" << endl;
+    cout << longestCommonSubsequence(vector<int>({1, 2, 3, 4, 5, 6, 7, 8, 9}),
+                                     vector<int>({4, 2, 6, 8, 1, 3, 9, 5, 7})) << endl;
+                                     // {{0 4} {2 5} {4 7} {6 8}}
+    cout << longestCommonSubsequence(vector<char>({'G', 'A', 'T', 'T', 'A', 'C', 'A'}),
+                                     vector<char>({'G', 'T', 'A', 'A', 'T', 'C', 'T', 'A', 'A', 'C'})) << endl;
+                                     // {{0 0} {1 3} {2 4} {3 6} {4 8} {5 9}}
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testStringsSequences(){
     cout << "-----o-----o----- STRING AND SEQUENCE ALGORITHMS -----o-----o-----" << endl << endl;
     testStringMatching();
     testLongestIncreasingSubsequence();
+    testLongestCommonSubsequence();
 }
