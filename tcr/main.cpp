@@ -3,6 +3,7 @@
 TODO:
 
 Simple:
+Point in polygon
 Distances / Closest point (point line segment DONE, line segment line segment, maybe something with circles)
 Euler phi / totent
 Johnson / Floyd-Warschall (All pairs shortest paths)
@@ -17,12 +18,13 @@ Suffix Tree (longest common substring)
 (2D) Fenwick Tree
 Linear system of equation solver (Matrix inverse)
 Heavy Light Decomposition (Maximum Edge on Path query)
-Least Common Ancester in a Tree
+Least Common Ancestor in a Tree
 Hierholzer
 Bron-Kerbosch
 Min cost max flow
 KD tree
-Voranoid diagram
+Voronoi diagram
+Hungarian algorithm
 */
 
 #define LOG
