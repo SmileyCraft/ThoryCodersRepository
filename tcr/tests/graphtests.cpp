@@ -5,6 +5,7 @@
 #include "../graphs/stronglyconnectedcomponents.cpp"
 #include "../graphs/prim.cpp"
 #include "../graphs/hopcroftkarp.cpp"
+#include "../graphs/dinic.cpp"
 
 // SHORTEST PATHS
 
@@ -76,6 +77,16 @@ void testHopcroftKarp(){
     cout << endl;
 }
 
+// DINIC
+
+void testDinic(){
+    cout << "DINIC" << endl;
+    vector<unordered_map<int, NUMBER>> graph = {{{1,10},{2,10}},{{2,2},{3,4},{4,8}},{{4,9}},{{5,10}},{{3,6},{5,10}},{}};
+    cout << dinic(graph, 0, 5) << endl;
+    cout << minCut(graph, 0, 5) << endl;
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testGraphs(){
@@ -85,4 +96,5 @@ void testGraphs(){
     testStronglyConnectedComponents();
     testPrim();
     testHopcroftKarp();
+    testDinic();
 }
