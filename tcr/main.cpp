@@ -9,7 +9,6 @@ Euler phi / totent
 Johnson / Floyd-Warschall (All pairs shortest paths)
 
 Complicated:
-Dinic (max flow, maybe a separate min cut method)
 Order Statistics Tree (Balanced Binary Search Tree)
 3D geometry intersections / distances / cross product / etc
 
@@ -19,8 +18,7 @@ Suffix Tree (longest common substring)
 Linear system of equation solver (Matrix inverse)
 Heavy Light Decomposition (Maximum Edge on Path query)
 Least Common Ancestor in a Tree
-Hierholzer
-Bron-Kerbosch
+Hierholzer (Euler path / cycle)
 Min cost max flow
 KD tree
 Voronoi diagram
