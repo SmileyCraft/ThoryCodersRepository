@@ -67,9 +67,10 @@ void testMatrix(){
     Matrix inv = inverse(c);
     printMatrix(inv);
     printMatrix(c * inv);
-    cout << determinant(a) << endl;
-    cout << determinant(b) << endl;
+    cout << determinant(a) << " ";
+    cout << determinant(b) << " ";
     cout << determinant(c) << endl;
+    cout << c * vector<NUMBER>{1, 2, 3};
     cout << endl;
 }
 

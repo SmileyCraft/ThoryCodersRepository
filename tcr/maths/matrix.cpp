@@ -1,5 +1,5 @@
 
-using Matrix = vector<vector<NUMBER>>;
+using Matrix = vector<vector<NUMBER>>; // Vector of rows
 
 Matrix operator+(Matrix x, Matrix y){ // O(mn)
     for (int i=0; i<x.size(); i++)
@@ -8,16 +8,24 @@ Matrix operator+(Matrix x, Matrix y){ // O(mn)
     return x;
 }
 
-Matrix operator*(Matrix x, Matrix y){ // O(abc) for x = a*b, y = b*c
-    Matrix c(x.size(), vector<NUMBER>(y[0].size()));
+Matrix operator*(Matrix x, Matrix y){ // O(abc) if x = a*b, y = b*c
+    Matrix z(x.size(), vector<NUMBER>(y[0].size()));
     for (int i=0; i<x.size(); i++)
         for (int j=0; j<y.size(); j++)
             for (int k=0; k<y[0].size(); k++)
-                c[i][k] += x[i][j] * y[j][k];
-    return c;
+                z[i][k] += x[i][j] * y[j][k];
+    return z;
 }
 
-Matrix id(int n){
+vector<NUMBER> operator*(Matrix x, vector<NUMBER> v){ // O(mn)
+    vector<NUMBER> w(x.size());
+    for (int i=0; i<x.size(); i++)
+        for (int j=0; j<v.size(); j++)
+            w[i] += x[i][j] * v[j];
+    return w;
+}
+
+Matrix id(int n){ // O(n^2)
     Matrix x(n, vector<NUMBER>(n));
     for (int i=0; i<n; i++) x[i][i] = 1;
     return x;

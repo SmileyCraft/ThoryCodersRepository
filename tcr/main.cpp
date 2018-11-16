@@ -6,7 +6,7 @@ Simple:
 Point in polygon
 Distances / Closest point (point line segment DONE, line segment line segment, maybe something with circles)
 Euler phi / totent
-Johnson / Floyd-Warschall (All pairs shortest paths)
+Johnson / Floyd-Warshall (All pairs shortest paths)
 
 Complicated:
 Order Statistics Tree (Balanced Binary Search Tree)
@@ -15,7 +15,6 @@ Order Statistics Tree (Balanced Binary Search Tree)
 Unfamiliar:
 Suffix Tree (longest common substring)
 (2D) Fenwick Tree
-Linear system of equation solver (Matrix inverse)
 Heavy Light Decomposition (Maximum Edge on Path query)
 Least Common Ancestor in a Tree
 Hierholzer (Euler path / cycle)
