@@ -63,14 +63,17 @@ void testMatrix(){
     printMatrix(a+b);
     printMatrix(a*b);
     printMatrix(b*a);
-    Matrix c{{1, 2, -1}, {2, 4, 0}, {1, -1, 0}};
+    Matrix c{{1, 2, -1}, {2, 4, 0}, {1, 1, 0}};
     Matrix inv = inverse(c);
     printMatrix(inv);
     printMatrix(c * inv);
     cout << determinant(a) << " ";
     cout << determinant(b) << " ";
     cout << determinant(c) << endl;
-    cout << c * vector<NUMBER>{1, 2, 3};
+    cout << c * Vector{1, 2, 3} << endl;
+    cout << inv * Vector{2, 10, -1} << endl;
+    printMatrix(ldivide(c, {{2}, {10}, {3}}));
+    printMatrix(ldivide(c, id(3)));
     cout << endl;
 }
 
