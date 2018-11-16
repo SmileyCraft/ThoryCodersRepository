@@ -1,6 +1,7 @@
 
 #include "../maths/primes.cpp"
 #include "../maths/euclid.cpp"
+#include "../maths/matrix.cpp"
 
 // PRIMES
 
@@ -41,6 +42,35 @@ void testEuclid(){
     testExtended(21, -15); // -2 -3 3 SUCCESS
     testExtended(-21, 15); // 2 3 3 SUCCESS
     testExtended(-21, -15); // 2 -3 3 SUCCESS
+    cout << endl;
+}
+
+// MATRIX
+
+void printMatrix(Matrix a){
+    for (auto i : a){
+        for (auto j : i){
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+
+void testMatrix(){
+    cout << "MATRIX" << endl;
+    printMatrix(id(5));
+    Matrix a{{3, 5}, {1, 2}}, b{{0, 2}, {-2, 1}};
+    printMatrix(a+b);
+    printMatrix(a*b);
+    printMatrix(b*a);
+    Matrix c{{1, 2, -1}, {2, 4, 0}, {1, -1, 0}};
+    Matrix inv = inverse(c);
+    printMatrix(inv);
+    printMatrix(c * inv);
+    cout << determinant(a) << endl;
+    cout << determinant(b) << endl;
+    cout << determinant(c) << endl;
+    cout << endl;
 }
 
 // COMBINED TEST
@@ -49,4 +79,5 @@ void testMaths(){
     cout << "-----o-----o----- MATHEMATICAL ALGORITHMS -----o-----o-----" << endl << endl;
     testPrimes();
     testEuclid();
+    testMatrix();
 }

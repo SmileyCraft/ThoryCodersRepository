@@ -1,3 +1,4 @@
+
 template <class T, class Comp>
 struct BSTNode{
     T t; // value;
