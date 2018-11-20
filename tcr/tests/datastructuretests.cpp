@@ -4,6 +4,7 @@
 #include "../datastructures/trie.cpp"
 #include "../datastructures/segmenttree.cpp"
 #include "../datastructures/bst.cpp"
+#include "../datastructures/heavylightdecomposition.cpp"
 
 // UNION FIND
 
@@ -168,6 +169,16 @@ void testBST(){
     cout << endl;
 }
 
+// HEAVY LIGHT DECOMPOSITION
+
+void testHeavyLightDecomposition(){
+    cout << "HEAVY LIGHT DECOMPOSITION" << endl;
+    HLD hld({{1},{0,2,3,4},{1,5,6},{1,7},{1},{2},{2,8},{3,9},{6,10,11},{7},{8},{8}}, 0);
+    cout << hld.p << " " << hld.h << " " << hld.pr << endl;
+    cout << hld.lca(5, 11) << " " << hld.lca(5, 7) << " " << hld.lca(2, 10) << endl;
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testDatastructures(){
@@ -177,4 +188,5 @@ void testDatastructures(){
     testTrie();
     testSegmentTree();
     testBST();
+    testHeavyLightDecomposition();
 }

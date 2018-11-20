@@ -5,8 +5,6 @@ TODO:
 Johnson / Floyd-Warschall (All pairs shortest paths)
 Suffix Tree (longest common substring)
 (2D) Fenwick Tree
-Heavy Light Decomposition (Maximum Edge on Path query)
-Least Common Ancestor in a Tree
 Hierholzer (Euler path / cycle)
 Min cost max flow
 KD tree
