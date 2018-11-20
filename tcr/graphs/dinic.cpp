@@ -1,6 +1,4 @@
 
-NUMBER INF = 1000000000000000000;
-
 void addBackwardsArrows(vector<unordered_map<int, NUMBER>>& c){
     for (int i = 0; i < c.size(); i++)
         for (pair<int, NUMBER> p : c[i])

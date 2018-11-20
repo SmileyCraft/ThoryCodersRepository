@@ -13,7 +13,7 @@ struct SegmentTree{
 
     void update(int i, T val){ // O(log n)
         for (combs[i + n] = val, i = (i + n) >> 1; i > 0; i >>= 1)
-            combs[i] = combine(combs[i << 1], combs[(i << 1) + 1]);
+            combs[i] = combine(combs[i << 1], combs[(i << 1) | 1]);
     }
 
     int query(int from, int to){ // O(log n)

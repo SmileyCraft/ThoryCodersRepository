@@ -1,4 +1,10 @@
 
+bool pointLine(point p, line l){
+    point d = l.direction();
+    p -= l.p;
+    return (p ^ d) == 0 && p * d <= d.lengthSquared() && p * d >= 0;
+}
+
 point lineLine(line l1, line l2){ // O(1)
     point d1 = l1.q - l1.p;
     point d2 = l2.q - l2.p;

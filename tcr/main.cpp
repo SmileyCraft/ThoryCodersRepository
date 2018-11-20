@@ -2,17 +2,7 @@
 /*
 TODO:
 
-Simple:
-Point in polygon
-Distances / Closest point (point line segment DONE, line segment line segment, maybe something with circles)
-Euler phi / totent
 Johnson / Floyd-Warschall (All pairs shortest paths)
-
-Complicated:
-Order Statistics Tree (Balanced Binary Search Tree)
-3D geometry intersections / distances / cross product / etc
-
-Unfamiliar:
 Suffix Tree (longest common substring)
 (2D) Fenwick Tree
 Linear system of equation solver (Matrix inverse)
@@ -21,8 +11,8 @@ Least Common Ancestor in a Tree
 Hierholzer (Euler path / cycle)
 Min cost max flow
 KD tree
-Voronoi diagram
 Hungarian algorithm
+Simplex algorithm
 */
 
 #define LOG

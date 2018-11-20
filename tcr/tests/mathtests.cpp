@@ -11,6 +11,8 @@ void testPrimes(){
     printEval(primes, [](bool b){cout << (b ? "p" : "c");}) << endl; // {c c p p c p c p c c c p c p c c c p c p c c c p c c c c c p}
     cout << factorize(120) << endl; // {{5 1} {3 1} {2 3}}
     cout << factorSieve(10) << endl; // {{} {} {{2 1}} {{3 1}} {{2 2}} {{5 1}} {{3 1} {2 1}} {{7 1}} {{2 3}} {{3 2}}}
+    cout << eulerPhi(360) << endl; // 96
+    cout << eulerPhi(1000000009) << endl; // 1000000008
     cout << endl;
 }
 

@@ -59,3 +59,12 @@ vector<unordered_map<int, int>> factorSieve(int n){
     }
     return factorizations;
 }
+
+int eulerPhi(int x){
+    unordered_map<int, int> factors = factorize(x);
+    for (pair<int, int> factor : factors){
+        x /= factor.first;
+        x *= factor.first - 1;
+    }
+    return x;
+}
