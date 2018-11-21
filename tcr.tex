@@ -213,12 +213,11 @@ The Thorycoders}
 
 \entry{Dinic}{}
 {./tcr/graphs/dinic.cpp}
-{$\mathcal{O}(V^2E)$}
-{Flow Graph}
+{$\mathcal{O}(V^2E)$}{}
 
-\subsection{Johnson's reweighting}
-Apply Bellman-Ford to the graph with \texttt{d[$\omega$] = 0} (as if an extra vertex with zero weight edges were added), then reweight edges to $w_{uv}+h_u-h_v$, then use Dijkstra.
-\noindent\textbf{Complexity:} $\mathcal{O}(VE\log V)$
+\entry{Min Cost Flow}{}
+{./tcr/graphs/mincostflow.cpp}
+{$\mathcal{O}(V^2E^3\log^2V)$}{}
 
 \subsection{Theorems in Graph Theory}
 \begin{description}
