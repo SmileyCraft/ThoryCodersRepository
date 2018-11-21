@@ -15,6 +15,7 @@ Simplex algorithm
 #define LOG
 
 #include "template/template.cpp"
+#include "template/misc.cpp"
 #include "template/geometryessentials.cpp"
 #include "template/prettyprinting.cpp"
 
