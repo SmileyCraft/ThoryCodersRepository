@@ -6,6 +6,7 @@
 #include "../graphs/prim.cpp"
 #include "../graphs/hopcroftkarp.cpp"
 #include "../graphs/dinic.cpp"
+#include "../graphs/johnson.cpp"
 
 // SHORTEST PATHS
 
@@ -14,13 +15,16 @@ void testShortestPaths(){
     vector<unordered_map<int, NUMBER>> graph = {{{0,2},{1,3},{2,5}},{{2,1},{3,2}},{{1,1},{3,5}},{{0,8},{1,1}},{}};
     cout << dijkstra(graph, 0) << endl; // {{0 0} {0 3} {1 4} {1 5} {-1 -1}}
     cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 3} {1 4} {1 5} {-1 -1}}
+    cout << johnson(graph) << endl;
     graph[0][1] = 6;
     graph[1][2] = -2;
     cout << bellmanFord(graph, 0) << endl; // {}
+    cout << johnson(graph) << endl; // {}
     graph[2][1] = 2;
     cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 6} {1 4} {1 8} {-1 -1}}
     graph[0][4] = -10;
     cout << bellmanFord(graph, 0) << endl; // {{0 0} {0 6} {1 4} {1 8} {0 -10}}
+    cout << johnson(graph) << endl;
     cout << endl;
 }
 
