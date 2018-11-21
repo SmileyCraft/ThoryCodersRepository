@@ -6,6 +6,7 @@
 #include "../graphs/prim.cpp"
 #include "../graphs/hopcroftkarp.cpp"
 #include "../graphs/dinic.cpp"
+#include "../graphs/mincostflow.cpp"
 
 // SHORTEST PATHS
 
@@ -87,6 +88,16 @@ void testDinic(){
     cout << endl;
 }
 
+void testMinCostFlow(){
+    cout << "MIN COST FLOW" << endl;
+    vector<unordered_map<int, NUMBER>> c = {{{1,1},{2,1}},{{2,1},{3,1}},{{4,1},{5,1}},{{6,1}},{{6,1}},{{6,1}},{}};
+    vector<unordered_map<int, NUMBER>> a = {{{1,1},{2,3}},{{2,1},{3,3}},{{4,1},{5,3}},{{6,1}},{{6,1}},{{6,1}},{}};
+    vector<unordered_map<int, NUMBER>> f = dinic(c, 0, 6);
+    minCostFlow(f, c, a);
+    cout << f << endl;
+    cout << endl;
+}
+
 // COMBINED TEST
 
 void testGraphs(){
@@ -97,4 +108,5 @@ void testGraphs(){
     testPrim();
     testHopcroftKarp();
     testDinic();
+    testMinCostFlow();
 }
