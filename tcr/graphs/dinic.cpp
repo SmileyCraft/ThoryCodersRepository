@@ -1,4 +1,7 @@
 
+// O(min{V^2/3,E^1/2}E) if all capacities are 1.
+// O(Esqrt(V)) if for every node (except s or t) there is either only one incoming edge with capacity 1 or only one outgoing edge with capacity 1
+
 void addBackwardsArrows(vector<unordered_map<int, NUMBER>>& c){
     for (int i = 0; i < c.size(); i++)
         for (pair<int, NUMBER> p : c[i])
@@ -24,17 +27,18 @@ vector<int> levelGraph(vector<unordered_map<int, NUMBER>>& c, vector<unordered_m
     return l;
 }
 
+// Potential improvement: for each node store the iterator of the last neighbor checked such that we do not need to repeat checking when re-entering
 NUMBER bf(vector<unordered_map<int, NUMBER>>& c, vector<unordered_map<int, NUMBER>>& f, vector<int>& l, int s, NUMBER inFlow, int t){
     if (s == t) return inFlow;
     NUMBER flow = 0;
     for (pair<int, NUMBER> p : c[s]){
+        if (flow == inFlow) break;
         if (f[s][p.first] < p.second && l[s] < l[p.first]){
             NUMBER outFlow = bf(c, f, l, p.first, min(inFlow - flow, p.second - f[s][p.first]), t);
             f[s][p.first] += outFlow;
             f[p.first][s] -= outFlow;
             flow += outFlow;
         }
-        if (flow == inFlow) break;
     }
     return flow;
 }

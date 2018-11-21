@@ -159,9 +159,6 @@ The Thorycoders}
 \entry{C++ Template}{}
 {./tcr/template/template.cpp}{}{}
 
-\entry{Pretty Printing}{}
-{./tcr/template/prettyprinting.cpp}{}{}
-
 \entry{Geometry Essentials}{}
 {./tcr/template/geometryessentials.cpp}{}{}
 
@@ -178,6 +175,12 @@ The Thorycoders}
 
 \entry{Segment Tree}{}
 {./tcr/datastructures/segmenttree.cpp}{}{}
+
+\entry{Order Statistisc Tree}{}
+{./tcr/datastructures/bst.cpp}{}{}
+
+\entry{Heavy Light Decomposition}{}
+{./tcr/datastructures/heavylightdecomposition.cpp}{}{}
 
 \section{Graphs}
 
@@ -204,11 +207,8 @@ The Thorycoders}
 {./tcr/graphs/hopcroftkarp.cpp}
 {$\mathcal{O}(E\sqrt V)$}{}
 
-\entry{Flow Graph}{}
-{./flowgraph.cpp}{}{}
-
 \entry{Dinic}{}
-{./dinic.cpp}
+{./tcr/graphs/dinic.cpp}
 {$\mathcal{O}(V^2E)$}
 {Flow Graph}
 
@@ -258,6 +258,18 @@ Apply Bellman-Ford to the graph with \texttt{d[$\omega$] = 0} (as if an extra ve
 {./tcr/geometry/distances.cpp}{}
 {Geometry Essentials}
 
+\entry{Point in Polygon}{}
+{./tcr/geometry/pointinpolygon.cpp}{}
+{Geometry Essentials}
+
+\entry{Sort Line Segments}{}
+{./tcr/geometry/sortlinesegments.cpp}{}
+{Geometry Essentials}
+
+\entry{Voronoi and Delauney}{}
+{./tcr/geometry/voronoi.cpp}{}
+{Geometry Essentials}
+
 \subsection{Formulae}
 
 \begin{equation*}
@@ -300,6 +312,9 @@ Given a non-self-intersecting closed polygon on $n$ vertices, given as $(x_i, y_
 
 \entry{Euclid}{}
 {./tcr/maths/euclid.cpp}{}{}
+
+\entry{Matrix}{}
+{./tcr/maths/matrix.cpp}{}{}
 
 \subsection{Game theory}
 A game can be reduced to Nim if it is a finite impartial game, then for any state $x$, $g(x) = \inf (\mathbb{N}_0 - \{g(y) : y \in F(x) \})$. Nim and its variants include:

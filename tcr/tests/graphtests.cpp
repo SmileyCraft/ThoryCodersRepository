@@ -83,7 +83,8 @@ void testDinic(){
     cout << "DINIC" << endl;
     vector<unordered_map<int, NUMBER>> graph = {{{1,10},{2,10}},{{2,2},{3,4},{4,8}},{{4,9}},{{5,10}},{{3,6},{5,10}},{}};
     cout << dinic(graph, 0, 5) << endl;
-    cout << minCut(graph, 0, 5) << endl;
+    // {{{2 9} {1 10}} {{0 -10} {4 6} {2 0} {3 4}} {{1 0} {0 -9} {4 9}} {{4 -5} {1 -4} {5 9}} {{2 -9} {1 -6} {5 10} {3 5}} {{4 -10} {3 -9}}}
+    cout << minCut(graph, 0, 5) << endl; // {{0 1} {2 4}}
     cout << endl;
 }
 
