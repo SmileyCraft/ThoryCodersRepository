@@ -1,0 +1,296 @@
+
+\documentclass[
+	a4paper,
+	landscape,
+	10pt,
+	article
+]{article}
+\usepackage[
+	a4paper,
+	landscape,
+	twocolumn,
+	left=0.8cm,
+	right=0.3cm,
+	top=1.8cm,
+	bottom=-0.3cm,
+	columnsep=1cm,
+	hmarginratio=1:1,
+	asymmetric
+]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[compact]{titlesec}
+\usepackage{ifthen}
+\usepackage{nicefrac}
+\usepackage{hyperref}
+
+%*************** Layout ***************
+
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\latexcolumnseprulecolor}{\color{red}}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\@outputdblcol{
+	\normalcolor\vrule
+}{
+	\latexcolumnseprulecolor\vrule
+}{
+}{
+	\@latex@warning{Patching \string\@outputdblcol\space failed}%
+}
+\makeatother
+
+%*************** Title ***************
+
+\title{
+	\vspace{-5em}
+	\includegraphics[scale=0.7]{./logo.eps}\\
+	\vspace{-1.5em}
+	Team Code Reference
+	\vspace{-0.7em}
+}
+\author{
+	\Large \textbf{The Thorycoders}\\
+}
+\date{
+	\vspace{-0.7em}
+	Benelux Algorithm Programming Contest\\
+	Oktober 27, 2018
+	\vspace{-1.9em}
+}
+
+%*************** Table of Contents ***************
+
+\usepackage[toc]{multitoc}
+\usepackage{tocloft}
+\renewcommand*{\multicolumntoc}{2}
+\setlength{\cftbeforesecskip}{-1pt}
+\setlength{\cftbeforesubsecskip}{-1.5pt}
+\makeatletter
+\renewcommand{\@cftmaketoctitle}{}
+\makeatother
+
+%*************** Headings ***************
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\setlength{\headsep}{0.4em}
+\setlength{\footskip}{0em}
+
+\fancyhead[L]{\hspace{5em} Utrecht University \phantom{-} \bfseries
+The Thorycoders}
+\fancyhead[R]{\thepage \hspace{0.5em}}
+\fancyhead[C]{\leftmark}
+
+%*************** Code highlighting ***************
+
+\lstset{
+	backgroundcolor=\color{white},
+	tabsize=4,
+	language=C++,
+	basicstyle=\footnotesize\ttfamily,
+	frame=lines,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	breaklines=true,
+	keywordstyle=\color[rgb]{0, 0, 1},
+	commentstyle=\color[rgb]{0, 0.5, 0},
+	stringstyle=\color{red}
+}
+
+
+%*************** Section entries ***************
+
+% usage: \entry{name}{description}{snippet location}{complexity}{dependencies}
+\newcommand{\entry}[5]{
+	\subsection{#1}
+	#2
+	\ifthenelse{\equal{#4}{}}{}{\noindent\textbf{Complexity:} #4}
+	\ifthenelse{\equal{#5}{}}{}{\noindent\textbf{Dependencies:} #5}
+	\ifthenelse{\equal{#3}{}}{}{\lstinputlisting[firstline=2]{#3}}
+}
+
+%*************** Begin document ***************
+
+\begin{document}
+
+%*************** Reduce align spacing ***************
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+%*************** Titlepage ***************
+
+{\let\newpage\relax\maketitle}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+%*************** Contents ***************
+
+\section{Templates}
+
+\entry{Template for C++}{}
+{../tcr/template/template.cpp}{}{}
+
+\entry{Template for Python}{}
+{../tcr/template/template.py}{}{}
+
+\entry{Template for Java}{}
+{../tcr/template/template.java}{}{}
+
+\section{Data structures}
+
+\entry{Union find}{}
+{../tcr/data_structures/union_find.cpp}{}{}
+
+\entry{Fenwick tree}{}
+{../tcr/data_structures/fenwick_tree.cpp}{}{}
+
+\entry{Segment tree}{}
+{../tcr/data_structures/segment_tree.cpp}{}{}
+
+\entry{Heavy light decomposition}{}
+{../tcr/data_structures/heavy_light_decomposition.cpp}{}{}
+
+\section{Graphs}
+
+\entry{Essentials}{}
+{../tcr/graphs/essentials.cpp}{}{}
+
+\entry{Shortest path}{}
+{../tcr/graphs/shortest_path.cpp}{}{Essentials}
+
+\entry{Flow}{}
+{../tcr/graphs/flow.cpp}{}{Essentials}
+
+\entry{Vertex ordering}{}
+{../tcr/graphs/vertex_ordering.cpp}{}{}
+
+\entry{Strongly connected components}{}
+{../tcr/graphs/strongly_connected_components.cpp}{}{Vertex ordering}
+
+\entry{Minimum spanning tree}{}
+{../tcr/graphs/minimum_spanning_tree.cpp}{}{Essentials}
+
+\subsection{Theorems}
+
+\begin{enumerate}
+\item \textbf{Hall's marriage theorem.} Let $F$ be a family of subsets of $U$. Assume that for every subfamily $G\subset F$ we have $|\cup G|\geq |G|$. Then there exists an injective matching $f:F\to U$ such that $f(S)\in S$ for every $S\in F$.
+\item \textbf{Euler tour theorem.} An Euler tour is a cyclic path that visits each edge exactly once. A connected directed graph admits an Euler tour if, and only if, all vertices have equal in- and out-degree. A connected undirected graph admits an Euler tour if, and only if, all vertices have even degree.
+\item \textbf{Kirchoff's theorem.} Let $G=(V,E)$ be an undirected graph. Let $A$ be the $|V|\times|V|$ matrix with $A_{ii}=\mbox{deg}(i)$, $A_{ij}=-1$ for $\{i,j\}\in E$ and $A_{ij}=0$ elsewhere. Let $B$ be $A$ with one row and one column removed. Then $G$ has $\mbox{det}(B)$ spanning trees.
+\item \textbf{Stable marriage problem.} Given a set of $n$ men and a set of $n$ women, and each person has a strict preference list of the people of the other gender. A perfect matching of men with women is stable, if no man prefers another man's woman who also prefers him. Such a matching always exists and can be found by repeated proposing.
+\end{enumerate}
+
+\section{Geometry}
+
+\entry{Shapes}{}
+{../tcr/geometry/shapes.cpp}{}{}
+
+\entry{Intersections}{}
+{../tcr/geometry/intersections.cpp}{}{Shapes}
+
+\entry{Distances}{}
+{../tcr/geometry/distances.cpp}{}{Intersections}
+
+\entry{Polygons}{}
+{../tcr/geometry/polygons.cpp}{}{Distances}
+
+\entry{Convex hull}{}
+{../tcr/geometry/convex_hull.cpp}{}{Shapes}
+
+\subsection{Formulas}
+
+\begin{enumerate}
+\item \textbf{Pick's theorem.} The area of a simple lattice polygon is $i+\frac12b-1$ where $i$ is the amount of lattice points in the interior and $b$ is the amount of lattice points on the boundary.
+\item \textbf{Triangles.} Consider a triangle with edge lengths $a$, $b$, $c$ and respectively opposite angles $A$, $B$, $C$.
+\begin{itemize}
+\item \textit{Law of sines.} We have $\frac{\sin A}a=\frac{\sin B}b=\frac{\sin C}c$.
+\item \textit{Law of cosines.} We have $c^2=a^2+b^2-2ab\cos C$.
+\item \textit{Heron's formula.} The area is $\sqrt{s(s-a)(s-b)(s-c)}$ where $2s=a+b+c$.
+\end{itemize}
+\item \textbf{Brahmagupta's formula.} For a cyclic quadrilateral (koordenvierhoek) with side lengths $a$, $b$, $c$, $d$, the area is $\sqrt{(s-a)(s-b)(s-c)(s-d)}$ where $2s=a+b+c+d$.
+\end{enumerate}
+
+\section{Mathematics}
+
+\entry{Primes}{}
+{../tcr/maths/primes.cpp}{}{}
+
+\entry{Matrix}{}
+{../tcr/maths/matrix.cpp}{}{}
+
+\entry{Algebra}{}
+{../tcr/maths/algebra.cpp}{}{}
+
+\entry{Fourier transform}{}
+{../tcr/maths/fourier_transform.cpp}{}{}
+
+\subsection{Formulas}
+
+\begin{enumerate}
+\item \textbf{Lucas' theorem.} For $p$ prime, $n=n_kp^k+...+n_0p^0$ and $r=r_kp^k+...+r_0p^0$ we have ${n\choose r}\equiv{n_k\choose r_k}+...+{n_0\choose r_0}\ (\mbox{mod}\ p)$.
+\item \textbf{Derangements.} The number of permutations of $1,...,n$ that keep no number in place is $n!\sum_{k=0}^n(-1)^k/k!$.
+\item \textbf{Stirling's approximation.} We have $n!\sim\sqrt{2\pi n}\left(\frac{n}e\right)^n$ as $n\to\infty$. Furthermore $\left(\frac{n}r\right)^r\leq{n\choose r}\leq\frac{n^r}{r!}<\left(\frac{en}r\right)^r$.
+\item \textbf{Trigonometric identities.} For all $A,B$ we have
+\begin{itemize}
+\item $\sin(2A)=2\sin(A)\cos(A)$
+\item $\cos(2A)=\cos^2(A)-\sin^2(A)$
+\item $\sin(3A)=3\sin(A)-4\sin^3(A)$
+\item $\cos(3A)=4\cos^3(A)-3\cos(A)$
+\item $\sin(A+B)=\sin(A)\cos(B)+\sin(B)\cos(A)$
+\item $\cos(A+B)=\cos(A)\cos(B)-\sin(A)\sin(B)$
+\end{itemize}
+\end{enumerate}
+
+\subsection{Useful numbers}
+
+\begin{enumerate}
+\item $\pi\approx3.14159265358979323846264338327950288$
+\item $e\approx2.71828182845904523536028747135266249$
+\item Some primes $p$ and a generating element $g$ of $\mathbb{Z}/p\mathbb{Z}$
+\begin{itemize}
+\item $p=10^9+7$, $g=5$
+\item $p=10^{18}+9$, $g=7$
+\item $p=15\cdot2^{27}+1=2013265921$, $g=31$
+\end{itemize}
+\end{enumerate}
+
+\section{Miscellaneous}
+
+\entry{Example uses}{}
+{../tcr/miscellaneous/example_uses.cpp}{}{}
+
+\entry{Sequences}{}
+{../tcr/miscellaneous/sequences.cpp}{}{}
+
+\entry{Strings}{}
+{../tcr/miscellaneous/strings.cpp}{}{}
+
+\section{Notes}
+
+\subsection*{Test Session}
+\begin{itemize}
+	\setlength\itemsep{0em}
+	\item Try \texttt{for (long long i = 1; i <= N; ++i) x += i;} for large \texttt{N}.
+	\item Send in c++, Python and Java solutions.
+	\item Test the printer for c++, Python and Java.
+	\item Try out judges' test cases.
+\end{itemize}
+
+\end{document}

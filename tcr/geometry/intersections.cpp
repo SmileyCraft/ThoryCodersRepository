@@ -1,59 +1,27 @@
 
-bool pointLine(point p, line l){
-    point d = l.direction();
-    p -= l.p;
-    return (p ^ d) == 0 && p * d <= d.lengthSquared() && p * d >= 0;
+// Return x such that p projects onto l(x).
+template <typename N = ld>
+N point_line(point<N> p, line<N> l) {return (l.dir() * (p - l.p)) / l.length_squared();}
+
+// Return x such that l1(x) lies on l2.
+template <typename N = ld>
+N line_line(line<N> l1, line<N> l2) {return -(l2.dir() ^ (l1.p - l2.p)) / (l2.dir() ^ l1.dir());}
+
+// Return x_1 < x_2 such that both l(x_i) lie on c.
+template <typename N = ld>
+pair<N, N> line_circle(line<N> l, circle<N> c){
+    N x = point_line(c.p, l);
+    N s = sqrtl(c.r2 - c.p.distance_squared(l(x))) / l.length();
+    return {x - s, x + s};
 }
 
-point lineLine(line l1, line l2){ // O(1)
-    point d1 = l1.q - l1.p;
-    point d2 = l2.q - l2.p;
-    point dp = l2.p - l1.p;
-
-    // Lines must not be parallel, so d1 ^ d2 != 0
-    // Segments intersect iff 0 <= f1,f2 <= 1
-
-    NUMBER s1 = dp.x * d2.y - dp.y * d2.x;
-    // NUMBER s2 = dp.x * d1.y - dp.y * d1.x;
-    NUMBER inv = 1 / (d1 ^ d2);
-    NUMBER f1 = s1 * inv;
-    // NUMBER f2 = s2 * inv;
-
-    return l1.p + f1 * d1;
-}
-
-pair<point, point> lineCircle(line l, circle c){ // O(1)
-    point dl = l.q - l.p;
-    point dm = c.m - l.p;
-
-    NUMBER imm = dm * dm;
-    NUMBER ilm = dl * dm;
-    NUMBER ill = dl * dl;
-
-    // Line must not be degenerate, so l.p != l.q
-    // Line and circle intersect iff disc >= 0
-    // Line segment intersects iff 0 <= fi <= 1
-
-    NUMBER disc = ilm * ilm + ill * (c.r2 - imm);
-    NUMBER s = sqrt(disc);
-    NUMBER inv = 1 / ill;
-    NUMBER f1 = (ilm + s) * inv;
-    NUMBER f2 = (ilm - s) * inv;
-
-    return pair<point, point>(l.p + f1 * dl, l.p + f2 * dl);
-}
-
-pair<point, point> circleCircle(circle c1, circle c2){ // O(1)
-    point d = c2.m - c1.m;
-    point n = {d.y, -d.x};
-
-    // Circles must not have the same center
-    // Circles intersect iff disc >= 0
-
-    NUMBER inv = 1 / (d * d);
-    NUMBER f = (1 + (c1.r2 - c2.r2) * inv) / 2;
-    NUMBER disc = c1.r2 * inv - f * f;
-    NUMBER s = sqrt(disc);
-
-    return pair<point, point>(c1.m + f * d + s * n, c1.m + f * d - s * n);
+// Return both intersections, the first one to the right of the line {c1,c2} and the second one to the left.
+template <typename N = ld>
+pair<point<N>, point<N>> circle_circle(circle<N> c1, circle<N> c2){
+    point<N> d = c2.p - c1.p;
+    point<N> n = {d.y, -d.x};
+    N inv = 1 / d.length_squared();
+    N f = (1 + (c1.r2 - c2.r2) * inv) / 2;
+    N s = sqrtl(c1.r2 * inv - f * f);
+    return {c1.p + f * d + s * n, c1.p + f * d - s * n};
 }

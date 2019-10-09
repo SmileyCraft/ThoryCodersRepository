@@ -1,21 +1,19 @@
 
-NUMBER pointLineSegment(point p, line l){
-    point d = l.q - l.p;
-    point dm = l.p - p;
-    NUMBER idm = d * dm;
-    NUMBER idd = d * d;
-    NUMBER inv = 1 / idd;
+template <typename N = ld>
+N point_line_d2(point<N> p, line<N> l) {return square(l.dir() ^ (p - l.p)) / l.length_squared();}
 
-    NUMBER f = -idm * inv;
-    point cp = l.p + f * d;
-    if (f < 0) cp = l.p;
-    if (f > 1) cp = l.q;
-
-    return sqrt((cp - p).lengthSquared());
+template <typename N = ld>
+N point_line_segment_d2(point<N> p, line<N> l){
+    N x = point_line(p, l);
+    if (x <= 0) return p.distance_squared(l.p);
+    else if (x >= 1) return p.distance_squared(l.q);
+    else return point_line_d2(p, l);
 }
 
-//THIS DOES NOT WORK WHEN THE LINE SEGMENTS STRICTLY INTERSECT
-NUMBER lineSegmentLineSegment(line l1, line l2){
-    return min(min(pointLineSegment(l1.p, l2), pointLineSegment(l1.q, l2)),
-               min(pointLineSegment(l2.p, l1), pointLineSegment(l2.q, l1)));
+template <typename N = ld>
+N line_segment_line_segment_d2(line<N> l1, line<N> l2){
+    N x1 = line_line(l1, l2), x2 = line_line(l1, l2);
+    if (x1 >= 0 && x1 <= 1 && x2 >= 0 && x2 <= 1) return 0;
+    return min(min(point_line_segment_d2(l1.p, l2), point_line_segment_d2(l1.q, l2)),
+            min(point_line_segment_d2(l2.p, l1), point_line_segment_d2(l2.q, l1)));
 }

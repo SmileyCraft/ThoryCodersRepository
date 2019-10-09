@@ -2,10 +2,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using NUMBER = long double;
-NUMBER INF = 1000000;
+using ll = long long;
+using ld = long double;
+using pll = pair<ll, ll>;
+using vll = vector<ll>;
+using vld = vector<ld>;
+using vpll = vector<pll>;
+using vvll = vector<vll>;
 
-/*int main(){
-    cout << "Hello, World!" << endl;
+int main(){
+    ios_base::sync_with_stdio(false); // Use this to speed up cin/cout, but cannot use printf/scanf anymore.
+    cin.tie(nullptr); // Use this to speed up cin/cout, but console cannot be interactive anymore. Use Ctrl+C for EOF.
+    cout << "Hello, World!" << endl; // Note that '\n' is faster than endl.
     return 0;
-}*/
+}
