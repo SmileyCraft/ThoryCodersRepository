@@ -3,10 +3,11 @@ template <typename N = ll>
 struct weighted_edge{
     ll i, j; N w; // from, to, weight
     weighted_edge(ll i_ = -1, ll j_ = -1, N w_ = -1) : i(i_), j(j_), w(w_) {}
+    bool operator> (const weighted_edge<N> &e) const {return w > e.w;}
 };
 
 template <typename N = ll>
-using weighted_graph = vector<vector<pair<long long, N>>>;
+using weighted_graph = vector<vector<pair<ll, N>>>;
 
 template <typename N = ll>
 struct flow_edge{

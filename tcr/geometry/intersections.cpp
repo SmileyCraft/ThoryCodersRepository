@@ -3,6 +3,10 @@
 template <typename N = ld>
 N point_line(point<N> p, line<N> l) {return (l.dir() * (p - l.p)) / l.length_squared();}
 
+// Determines whether p is on l.
+template <typename N = ld>
+bool point_line_segment(point<N> p, line<N> l) {return ((l.p - p) ^ (l.q - p)) == 0 && (l.p - p) * (l.q - p) <= 0;}
+
 // Return x such that l1(x) lies on l2.
 template <typename N = ld>
 N line_line(line<N> l1, line<N> l2) {return -(l2.dir() ^ (l1.p - l2.p)) / (l2.dir() ^ l1.dir());}

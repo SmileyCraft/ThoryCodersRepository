@@ -1,6 +1,6 @@
 
 // Find longest common subsequence in O(nm) time.
-template <typename T>
+template <typename T = ll>
 vpll longest_common_subsequence(const vector<T> &xs, const vector<T> &ys){
     ll n = xs.size(), m = ys.size();
     vvll dp(n, vll(m));
@@ -20,7 +20,7 @@ vpll longest_common_subsequence(const vector<T> &xs, const vector<T> &ys){
 }
 
 // Find longest strictly increasing subsequence in O(n*log(n)) time.
-template <typename T>
+template <typename T = ll>
 vll longest_increasing_subsequence(const vector<T> &xs){
     vll prev(xs.size()), best;
     for (ll i = 0; i < xs.size(); i++){

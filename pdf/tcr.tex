@@ -188,13 +188,20 @@ The Thorycoders}
 \entry{Minimum spanning tree}{}
 {../tcr/graphs/minimum_spanning_tree.cpp}{}{Essentials}
 
+\subsection{Algorithmic descriptions}
+
+\begin{enumerate}
+\item \textbf{Biconnected components.} A biconnected graph is one that stays connected after removal of any one vertex. The biconnected components in an undirected graph can be found in linear time. In a depth first search, calculate for every vertex the depth and the lowpoint. The lowpoint is the minimum depth of all descendants in the search. This is the minimum of the depth of the vertex, the depths of its non-parent neighbours, and the lowpoints of its children. Then any non-root vertex is an articulation point if, and only if, its depth equals the minimum lowpoint of its children. The root is an articulation point if, and only if, it has at least two children.
+\item \textbf{Hierholzer's algorithm for an Euler tour.} An Euler tour is a cyclic path that visits each edge exactly once. A connected directed graph admits an Euler tour if, and only if, all vertices have equal in- and out-degree. A connected undirected graph admits an Euler tour if, and only if, all vertices have even degree. Such a tour can be found iteratively in linear time. Start with a tour of one vertex. As long as some vertex on the tour has outgoing edges, start walking from that vertex until you get back, and add this walk to the tour.
+\item \textbf{Gale Shapley algorithm for stable marriage.} Given a set of $n$ men and a set of $n$ women, and each person has a strict preference list of the people of the other gender. A perfect matching of men with women is stable, if no man prefers another man's woman who also prefers him. Such a matching always exists and can be found in $\mathcal{O}(n^2)$ by repeated proposing.
+\item \textbf{Johnson's all pair shortest path algorithm with negative weights.} Add a super node with zero-weight edges to all vertices. Perform the Bellman-Ford algorithm from this super node to determine the height of all vertices. Give new weights to the original edges, from $w(u,v)$ to $w(u,v)+h(u)-h(v)$. Finally perform Dijkstra's algorithm from every vertex. This takes $\mathcal{O}(n^2\log n+nm)$ time.
+\end{enumerate}
+
 \subsection{Theorems}
 
 \begin{enumerate}
 \item \textbf{Hall's marriage theorem.} Let $F$ be a family of subsets of $U$. Assume that for every subfamily $G\subset F$ we have $|\cup G|\geq |G|$. Then there exists an injective matching $f:F\to U$ such that $f(S)\in S$ for every $S\in F$.
-\item \textbf{Euler tour theorem.} An Euler tour is a cyclic path that visits each edge exactly once. A connected directed graph admits an Euler tour if, and only if, all vertices have equal in- and out-degree. A connected undirected graph admits an Euler tour if, and only if, all vertices have even degree.
 \item \textbf{Kirchoff's theorem.} Let $G=(V,E)$ be an undirected graph. Let $A$ be the $|V|\times|V|$ matrix with $A_{ii}=\mbox{deg}(i)$, $A_{ij}=-1$ for $\{i,j\}\in E$ and $A_{ij}=0$ elsewhere. Let $B$ be $A$ with one row and one column removed. Then $G$ has $\mbox{det}(B)$ spanning trees.
-\item \textbf{Stable marriage problem.} Given a set of $n$ men and a set of $n$ women, and each person has a strict preference list of the people of the other gender. A perfect matching of men with women is stable, if no man prefers another man's woman who also prefers him. Such a matching always exists and can be found by repeated proposing.
 \end{enumerate}
 
 \section{Geometry}
@@ -261,9 +268,9 @@ The Thorycoders}
 \subsection{Useful numbers}
 
 \begin{enumerate}
-\item $\pi\approx3.14159265358979323846264338327950288$
-\item $e\approx2.71828182845904523536028747135266249$
-\item Some primes $p$ and a generating element $g$ of $\mathbb{Z}/p\mathbb{Z}$
+\item Use \texttt{pi = acosl(-1);} or $\pi\approx3.14159265358979323846264338327950288$.
+\item Use \texttt{e = expl(1);} or $e\approx2.71828182845904523536028747135266249$.
+\item Some primes $p$ and a generating element $g$ of $\mathbb{Z}/p\mathbb{Z}$:
 \begin{itemize}
 \item $p=10^9+7$, $g=5$
 \item $p=10^{18}+9$, $g=7$
@@ -282,15 +289,41 @@ The Thorycoders}
 \entry{Strings}{}
 {../tcr/miscellaneous/strings.cpp}{}{}
 
+\entry{2SAT}{}
+{../tcr/miscellaneous/two_sat.cpp}{}{Strongly connected components}
+
 \section{Notes}
 
 \subsection*{Test Session}
 \begin{itemize}
-	\setlength\itemsep{0em}
-	\item Try \texttt{for (long long i = 1; i <= N; ++i) x += i;} for large \texttt{N}.
-	\item Send in c++, Python and Java solutions.
-	\item Test the printer for c++, Python and Java.
-	\item Try out judges' test cases.
+\setlength\itemsep{0em}
+\item Solve \texttt{print(4*int(input())**.5)}.
+\item Try \texttt{for (long long i = 1; i <= N; ++i) x += i;} for large \texttt{N}.
+\item Send in c++, Python and Java solutions.
+\item Test the printer for c++, Python and Java.
+\item Test documentation.
+\item Try out judges' test cases.
+\item Try out \texttt{\_\_int128}.
+\item Locate the water closet.
+\end{itemize}
+
+\subsection*{Wrong Answer}
+\begin{itemize}
+\item Add \texttt{cout.precision(13);}.
+\item Try \texttt{using ll = \_\_int128;}.
+\end{itemize}
+
+\subsection*{Time Limit Exceeded}
+\begin{itemize}
+\item Use \texttt{ios\_base::sync\_with\_stdio(false);} to speed up \texttt{cin} and \text{cout}, but you can not use \texttt{printf} or \texttt{scanf} anymore.
+\item Use \texttt{cin.tie(nullptr);} to speed up \texttt{cin} and \text{cout}, but the console is note interactive anymore. Use \text{Crtl+C} for end of file.
+\item Use \texttt{'\textbackslash n'} instead of \texttt{endl}, but the output is not flushed anymore.
+\end{itemize}
+
+\subsection*{Run Time Error}
+\begin{itemize}
+\item Recursion limit \texttt{sys.setrecursionlimit(10**9)}.
+\item Index out of bounds.
 \end{itemize}
 
 \end{document}

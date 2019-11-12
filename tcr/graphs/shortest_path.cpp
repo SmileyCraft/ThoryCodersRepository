@@ -19,12 +19,12 @@ vector<weighted_edge<N>> dijkstra(const weighted_graph<N> &g, ll s){
 }
 
 // Find the minimum weight path to all nodes from a single source in a directed weighted graph in O(n*m) time.
-// The graph may have negative edges but it should not have a negative cycle.
+// The graph may have negative edges and negative cycles.
 // At position t in the output we have {i, j, w} where g[i][j] is the last edge on path from s to t of minimum weight w.
-// We have w=INF if no such path exists and i=j=-1 if no last edge exists.
+// We have w=INF if no such path exists, w=-INF if the path can have arbitrarily small weight and i=j=-1 if no last edge exists.
 template <typename N = ll>
-std::vector<weighted_edge<N>> bellman_ford(const weighted_graph<N> &g, ll s){
-    std::vector<weighted_edge<N>> r(g.size(), {-1, -1, INF});
+vector<weighted_edge<N>> bellman_ford(const weighted_graph<N> &g, ll s){
+    vector<weighted_edge<N>> r(g.size(), {-1, -1, INF});
     r[s].w = 0;
     for (ll c = 1; c < g.size(); ++c) for (ll i = 0; i < g.size(); ++i)
             if (r[i].w != INF) for (ll j = 0; j < g[i].size(); ++j){
@@ -32,55 +32,45 @@ std::vector<weighted_edge<N>> bellman_ford(const weighted_graph<N> &g, ll s){
         N nw = r[i].w + g[i][j].second;
         if (nw < e.w) e = {i, j, nw};
     }
+    vpll todo;
+    for (ll i = 0; i < g.size(); ++i) if (r[i].w != INF) for (ll j = 0; j < g[i].size(); ++j)
+        if (r[i].w + g[i][j].second < r[g[i][j].first].w) todo.push_back({i, j});
+    while (!todo.empty()){
+        pll p = todo.back();
+        todo.pop_back();
+        ll i = g[p.first][p.second].first;
+        if (r[i].w == -INF) continue;
+        r[i] = {p.first, p.second, -INF};
+        for (ll j = 0; j < g[i].size(); ++j) todo.push_back({i, j});
+    }
     return r;
 }
 
 // Find the minimum weight path between all pairs of nodes in a directed weighted graph in O(n^3) time.
-// The graph may have negative edges but it should not have a negative cycle.
+// The graph may have negative edges and negative cycles.
 // At position s,t in the output we have {i, j, w} where g[i][j] is the last edge on path from s to t of minimum weight w.
-// We have w=INF if no such path exists and i=j=-1 if no last edge exists.
+// We have w=INF if no such path exists, w=-INF if the path can have arbitrarily small weight and i=j=-1 if no last edge exists.
 template <typename N = ll>
 vector<vector<weighted_edge<N>>> floyd_warshall(const weighted_graph<N> &g){
     ll n = g.size();
     vector<vector<weighted_edge<N>>> r(g.size(), vector<weighted_edge<N>>(n, {-1, -1, INF}));
     for (ll i = 0; i < n; ++i){
         r[i][i].w = 0;
-        for (ll j = 0; j < g[i].size(); ++j) r[i][g[i][j].first] = {i, j, g[i][j].second};
+        for (ll j = 0; j < g[i].size(); ++j){
+            pair<ll, N> p = g[i][j];
+            weighted_edge<ll> &e = r[i][p.first];
+            if (p.second < e.w) e = {i, j, p.second};
+        }
     }
     for (ll k = 0; k < n; ++k) for (ll i = 0; i < n; ++i) for (ll j = 0; j < n; ++j)
             if (r[i][k].w != INF && r[k][j].w != INF && r[i][k].w + r[k][j].w < r[i][j].w){
         r[i][j] = r[k][j];
         r[i][j].w += r[i][k].w;
     }
-    return r;
-}
-
-// Find a negative cycle in a non-empty directed weighted graph in O(n*m) time.
-// Returns the empty list if there is no negative cycle.
-template <typename N = ll>
-vector<weighted_edge<N>> find_negative_cycle(const weighted_graph<N> &g){
-    ll n = g.size();
-    vector<vector<weighted_edge<N>>> dp = {vector<weighted_edge<N>>(n, {-1, -1, 0})};
-    for (ll c = 0; c <= n; ++c){
-        dp.push_back(dp.back());
-        for (ll i = 0; i < n; ++i) for (ll j = 0; j < g[i].size(); ++j){
-            weighted_edge<N> &e = dp[c + 1][g[i][j].first];
-            N nw = dp[c][i].w + g[i][j].second;
-            if (nw < e.w) e = {i, j, nw};
-        }
-    }
-    vector<weighted_edge<N>> r;
-    for (ll i = 0; i < g.size(); ++i) if (dp[n + 1][i].w < dp[n][i].w){
-        vector<ll> index(g.size(), -1);
-        weighted_edge<N> e = dp[n][i];
-        for (ll c = n + 1; index[e.i] == -1; --c, e = dp[c][e.i]){
-            index[e.i] = c;
-            r.emplace_back(e.i, e.j, g[e.i][e.j].second);
-        }
-        r.emplace_back(e.i, e.j, g[e.i][e.j].second);
-        reverse(r.begin(), r.end());
-        r.resize(r.size() + index[e.i] - n - 2);
-        break;
+    for (ll k = 0; k < n; ++k) for (ll i = 0; i < n; ++i) for (ll j = 0; j < n; ++j)
+            if (r[i][k].w != INF && r[k][j].w != INF && r[k][k].w < 0){
+        r[i][j] = r[k][j];
+        r[i][j].w = -INF;
     }
     return r;
 }

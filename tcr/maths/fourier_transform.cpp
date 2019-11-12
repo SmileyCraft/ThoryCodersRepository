@@ -10,7 +10,7 @@ struct complex_number{
     complex_number operator+ (complex_number z) {return {x + z.x, y + z.y};}
     complex_number operator* (complex_number z) {return {x * z.x - y * z.y, x * z.y + y * z.x};}
     complex_number operator/ (complex_number z) {return {(x * z.x + y * z.y) / z.abs_squared(), (y * z.x - x * z.y) / z.abs_squared()};}
-}
+};
 
 // Returns principal n'th root of unity.
 complex_number<> complex_root(ll n) {ld a = 2 * CONST_PI / n; return {cosl(a), sinl(a)};}
@@ -33,6 +33,5 @@ template <typename R = complex_number<>>
 vector<R> convolution(const vector<R> &xs1, const vector<R> &xs2, R root){
     ll n = xs1.size();
     vector<R> ys1 = discrete_fourier_transform(xs1, R(1) / root), ys2 = discrete_fourier_transform(xs2, R(1) / root);
-    for (ll i = 0; i < n; ++i) ys1[i] *= ys2[i];
     return discrete_fourier_transform(ys1 * ys2, root) / n;
 }

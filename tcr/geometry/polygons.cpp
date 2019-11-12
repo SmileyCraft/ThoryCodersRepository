@@ -19,7 +19,7 @@ bool point_in_polygon(point<N> p, const vector<point<N>> &poly){
     bool retval = false;
     for (ll i = 0; i < n; ++i){
         line<N> l = {poly[i], poly[(i + 1) % n]};
-        if (point_line_segment_d2(p, l) == 0) return true;
+        if (point_line_segment(p, l)) return true;
         if (l.p.y > l.q.y) swap(l.p, l.q);
         if (l.p.y <= p.y && p.y < l.q.y && (l.dir() ^ (p - l.p)) > 0) retval = !retval;
     }

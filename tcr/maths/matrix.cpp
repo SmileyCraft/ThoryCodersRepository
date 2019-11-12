@@ -14,9 +14,9 @@ struct matrix{
     }
 
     // Put matrix M in reduced row echelon form R and calculate determinant, rank, and inverse matrix I such that R=I*M.
-    // When called, det should be ring_one, ran should be 0, inv should be the identity matrix.
+    // When called, det should be 1, ran should be 0, inv should be the identity matrix.
     // Time complexity O(n^3) and space complexity O(n^2).
-    matrix<R> &gaussian_elimination(R &det, ll &ran, M &inv){
+    matrix<R> &gaussian_elimination(R &det, ll &ran, matrix<R> &inv){
         ll n = c.size(), m = c[0].size();
         for (ll i = 0, j = 0; i < n && j < m; ++j){
             ll k = i;

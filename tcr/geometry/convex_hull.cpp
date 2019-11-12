@@ -5,7 +5,7 @@ template <typename N = ld>
 vll convex_hull(const vector<point<N>> &ps){
     ll n = ps.size();
     vll hull = {0}, todo;
-    for (ll i = 1; i < n; ++i) if (ps[i].y == ps[hull[0]].y ? ps[i].x < ps[hull[0]].x : ps[i].y < ps[hull[0]].y) hull[0] = i;
+    for (ll i = 1; i < n; ++i) if (ps[i].x == ps[hull[0]].x ? ps[i].y < ps[hull[0]].y : ps[i].x < ps[hull[0]].x) hull[0] = i;
     for (ll i = 0; i < n; ++i) if (ps[i] != ps[hull[0]]) todo.push_back(i);
     sort(todo.begin(), todo.end(), [&](ll i, ll j){
         point<N> p1 = ps[i] - ps[hull[0]], p2 = ps[j] - ps[hull[0]];

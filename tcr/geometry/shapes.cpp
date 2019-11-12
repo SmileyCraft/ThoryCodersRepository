@@ -12,7 +12,7 @@ struct point{
     N distance_squared(point<N> p) {return (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y);}
     N length() {return sqrtl(length_squared());}
     N distance(point<N> p) {return sqrtl(distance_squared(p));}
-    P &normalize() {return *this /= length();}
+    point<N> &normalize() {return *this /= length();}
 };
 
 template <typename N = ld>

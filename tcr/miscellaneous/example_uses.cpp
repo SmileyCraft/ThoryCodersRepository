@@ -16,3 +16,12 @@ random_device rd; mt19937 gen(rd());
 uniform_int_distribution<ll> uid(1, 9); // Generate integers between 1 and 9 inclusive.
 uniform_real_distribution<ld> urd(1.0, 2.0); // Generate real numbers between 1 and 2 left-inclusive.
 ll x = uid(gen); ld y = urd(gen);
+
+// Order statistics tree. Note that duplicate entries are ignored.
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template<class T, class S> // The key and value types. S can be null_type.
+using order_tree = tree<T, S, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+ot.find_by_order(i); // Find the i'th smallest element, zero-based.
+order_of_key(v); // Find the amount of strictly smaller elements.

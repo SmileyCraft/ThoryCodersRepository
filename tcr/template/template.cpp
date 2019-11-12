@@ -11,8 +11,6 @@ using vpll = vector<pll>;
 using vvll = vector<vll>;
 
 int main(){
-    ios_base::sync_with_stdio(false); // Use this to speed up cin/cout, but cannot use printf/scanf anymore.
-    cin.tie(nullptr); // Use this to speed up cin/cout, but console cannot be interactive anymore. Use Ctrl+C for EOF.
-    cout << "Hello, World!" << endl; // Note that '\n' is faster than endl.
+    cout << "Hello, World!" << endl;
     return 0;
 }

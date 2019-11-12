@@ -1,6 +1,6 @@
 
 // Prefix sum tree. Use one-based indices.
-template <typename T>
+template <typename T = ll>
 struct fenwick_tree{
 	vector<T> t;
 
@@ -21,7 +21,7 @@ struct fenwick_tree{
 };
 
 // Two dimensional prefix sum tree. Use one-based indices.
-template <typename T>
+template <typename T = ll>
 struct fenwick_tree_2d{
     vector<vector<T>> t;
 
